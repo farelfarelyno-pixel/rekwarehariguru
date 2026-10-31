@@ -72,7 +72,6 @@ section,footer{position:relative;z-index:1}
 .letter .sign{line-height:1.5;font-family:'Great Vibes',cursive;font-size:1.8rem;color:#9a6b0b;margin-top:1.2rem;text-align:right}
 .close{position:absolute;top:.6rem;right:.9rem;font-size:1.8rem;background:none;border:0;cursor:pointer;color:#6b4e0e}
 
-
 /* KELAS */
 .kelas{padding:2rem 1.2rem 3rem;max-width:860px;margin:0 auto;text-align:center}
 .kelas h2{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,5vw,2.5rem);color:var(--gold2);margin-bottom:.4rem}
@@ -192,10 +191,13 @@ footer small{opacity:.6}
   </div>
 </div>
 
-<audio id="bgm" loop><!-- Opsional: <source src="musik.mp3" type="audio/mpeg"> --></audio>
+<!-- AUDIO HARIGURU.MP3 -->
+<audio id="bgm" loop>
+  <source src="hariguru.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-/* ===== ISI SURAT (edit teks di sini) ===== */
+/* ===== ISI SURAT ===== */
 const LETTERS = {
   tommy:{to:'Untuk Bapak Tommy tercinta,',body:[
     'Selamat Hari Guru Nasional, Pak. Hari ini kami ingin berhenti sejenak dari layar dan kode, lalu mengatakan sesuatu yang jarang sempat kami ucapkan: terima kasih.',
@@ -209,11 +211,19 @@ const LETTERS = {
     'Terima kasih, Bu, sudah menjadikan 11 RPL bukan sekadar kelas, tetapi keluarga. Semoga Ibu selalu sehat, bahagia, dan dikelilingi orang-orang yang menyayangi Ibu sebagaimana kami menyayangi Ibu.']}
 };
 
-/* ===== FOTO: ganti URL/nama file lalu hapus komentar ===== */
- setPhoto('foto-tommy','tommy.jpg');
- setPhoto('foto-fevi','fevi.jpg');
- setPhoto('foto-kelas','kelas.jpg');
-function setPhoto(id,src){const e=document.getElementById(id);e.style.backgroundImage=`url("${src}")`;e.textContent='';}
+/* ===== FOTO: Ganti nama file gambar sesuai foto Anda ===== */
+setPhoto('foto-tommy','tommy.jpg');
+setPhoto('foto-fevi','fevi.jpg');
+setPhoto('foto-kelas','kelas.jpg');
+function setPhoto(id,src){
+  const e=document.getElementById(id);
+  if(e){
+    e.style.backgroundImage=`url("${src}")`;
+    e.style.backgroundSize='cover';
+    e.style.backgroundPosition='center';
+    e.textContent='';
+  }
+}
 
 /* ===== PARTIKEL LATAR ===== */
 const bg=document.getElementById('bg'),bx=bg.getContext('2d');let W,H,dots=[];
@@ -270,32 +280,47 @@ document.getElementById('close').onclick=closeL;
 modal.addEventListener('click',e=>{if(e.target===modal)closeL();});
 addEventListener('keydown',e=>{if(e.key==='Escape')closeL();});
 
-/* ===== MUSIK ===== */
-/* Default: melodi lembut dibuat langsung dengan Web Audio (tanpa file).
-   Jika ingin musik sendiri: taruh musik.mp3 sefolder dengan file ini lalu
-   aktifkan <source> pada tag <audio id="bgm"> di atas. */
+/* ===== MUSIK (hariguru.mp3 & Auto-run saat interaksi pertama) ===== */
 const mbtn=document.getElementById('music'),bgm=document.getElementById('bgm');
-let ac,timer,playing=false;
-const CH=[[261.6,329.6,392],[220,261.6,329.6],[174.6,220,261.6],[196,246.9,293.7]]; // C Am F G
-function note(f,t,d){
-  const o=ac.createOscillator(),g=ac.createGain();
-  o.type='sine';o.frequency.value=f;
-  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.09,t+.08);g.gain.exponentialRampToValueAtTime(.0001,t+d);
-  o.connect(g).connect(ac.destination);o.start(t);o.stop(t+d);
+let playing=false;
+
+function toggleMusic(){
+  if(!playing){
+    bgm.play().then(()=>{
+      playing=true;
+      mbtn.classList.add('playing');
+      mbtn.textContent='❚❚';
+      mbtn.setAttribute('aria-label','Jeda musik latar');
+    }).catch(err=>{
+      console.log("Autoplay dicegah browser sampai user berinteraksi:", err);
+    });
+  } else {
+    bgm.pause();
+    playing=false;
+    mbtn.classList.remove('playing');
+    mbtn.textContent='♪';
+    mbtn.setAttribute('aria-label','Putar musik latar');
+  }
 }
-function bar(i){
-  const c=CH[i%4],t=ac.currentTime+.05;
-  [0,1,2,1,2,1,2,0].forEach((n,k)=>note(c[n]*(k%7===0?.5:1),t+k*.5,1.6));
+
+mbtn.onclick=toggleMusic;
+
+/* Auto-run pada klik/tap pertama di halaman mana saja */
+function autoPlayOnce(){
+  if(!playing){
+    bgm.play().then(()=>{
+      playing=true;
+      mbtn.classList.add('playing');
+      mbtn.textContent='❚❚';
+      mbtn.setAttribute('aria-label','Jeda musik latar');
+      removeListeners();
+    }).catch(()=>{});
+  }
 }
-function synthStart(){
-  ac=ac||new (window.AudioContext||window.webkitAudioContext)();ac.resume();
-  let i=0;bar(i++);timer=setInterval(()=>bar(i++),4000);
+function removeListeners(){
+  ['click','touchstart','keydown'].forEach(ev=>window.removeEventListener(ev,autoPlayOnce));
 }
-mbtn.onclick=()=>{
-  const hasFile=bgm.querySelector('source');
-  if(!playing){hasFile?bgm.play():synthStart();playing=true;mbtn.classList.add('playing');mbtn.textContent='❚❚';mbtn.setAttribute('aria-label','Jeda musik latar');}
-  else{hasFile?bgm.pause():(clearInterval(timer),ac.suspend());playing=false;mbtn.classList.remove('playing');mbtn.textContent='♪';mbtn.setAttribute('aria-label','Putar musik latar');}
-};
+['click','touchstart','keydown'].forEach(ev=>window.addEventListener(ev,autoPlayOnce));
 </script>
 </body>
 </html>
