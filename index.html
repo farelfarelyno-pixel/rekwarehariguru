@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Selamat Hari Guru Nasional – SMK Budi Mulia Karawang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a1730; --navy2:#12274d; --gold:#e6b94d; --gold2:#f7dd94; --cream:#fdf6e3;
+  --glass:rgba(255,255,255,.08); --line:rgba(230,185,77,.35);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;color:var(--cream);line-height:1.7;
+  background:radial-gradient(1200px 700px at 20% -10%,#1d3c78 0%,transparent 60%),
+             radial-gradient(900px 600px at 100% 30%,#2a2352 0%,transparent 60%),var(--navy);
+  background-attachment:fixed;overflow-x:hidden}
+#bg,#confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none}
+#bg{z-index:0}#confetti{z-index:50}
+section,footer{position:relative;z-index:1}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 1.5rem}
+.hero .script{font-family:'Great Vibes',cursive;font-size:clamp(2.6rem,9vw,5rem);color:var(--gold2);text-shadow:0 0 30px rgba(230,185,77,.5);line-height:1.1}
+.hero h1{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(2.2rem,7.5vw,5rem);line-height:1.15;margin:.4rem 0 1rem;
+  background:linear-gradient(120deg,#fff3c4,var(--gold),#fff3c4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .date{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:.35rem 1.4rem;color:var(--gold2);letter-spacing:.12em;margin-bottom:1.4rem;background:var(--glass);backdrop-filter:blur(8px)}
+.hero .code{font-family:ui-monospace,Consolas,monospace;font-size:clamp(.8rem,2.6vw,1rem);color:var(--gold2);background:rgba(0,0,0,.3);border:1px solid var(--line);border-radius:10px;padding:.5rem 1rem;margin-bottom:1.1rem}
+.hero .sub{max-width:34rem;font-weight:300;font-size:clamp(1rem,2.6vw,1.2rem)}
+.hero .sub b{font-weight:500;color:var(--gold2)}
+.scroll{margin-top:2.5rem;color:var(--gold);text-decoration:none;font-size:.9rem;animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(8px)}}
+
+/* CARDS */
+.cards{padding:4rem 1.2rem 5rem;max-width:1000px;margin:0 auto}
+.cards h2,.quote h2{font-family:'Playfair Display',serif;text-align:center;font-size:clamp(1.7rem,5vw,2.5rem);color:var(--gold2);margin-bottom:.4rem}
+.cards .lead{text-align:center;font-weight:300;margin-bottom:2.8rem;opacity:.85}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.flip{perspective:1200px;height:480px;cursor:pointer;border:0;background:none;color:inherit;font:inherit;text-align:center}
+.flip:focus-visible{outline:2px solid var(--gold);outline-offset:6px;border-radius:24px}
+.inner{position:relative;width:100%;height:100%;transition:transform .8s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.flip.on .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:24px;padding:2rem 1.6rem;
+  background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 10px 50px rgba(0,0,0,.35),inset 0 0 40px rgba(230,185,77,.06);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem}
+.face:hover{box-shadow:0 10px 60px rgba(230,185,77,.25),inset 0 0 40px rgba(230,185,77,.1)}
+.back{transform:rotateY(180deg);background:linear-gradient(160deg,rgba(230,185,77,.16),rgba(255,255,255,.07))}
+.photo{width:170px;height:170px;border-radius:50%;border:3px solid var(--gold);padding:5px;box-shadow:0 0 30px rgba(230,185,77,.4)}
+.photo div{width:100%;height:100%;border-radius:50%;background:var(--navy2) center/cover no-repeat;display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;color:var(--gold2);text-align:center;padding:1rem;font-weight:300}
+.face h3{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--gold2)}
+.face .role{font-weight:300;font-size:.95rem;opacity:.85}
+.hint{font-size:.8rem;color:var(--gold);margin-top:.4rem}
+.back p{font-size:.95rem;font-weight:300}
+.btn{font:inherit;font-weight:500;cursor:pointer;border:0;border-radius:99px;padding:.7rem 1.6rem;color:var(--navy);
+  background:linear-gradient(120deg,var(--gold),var(--gold2));box-shadow:0 6px 24px rgba(230,185,77,.4);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(230,185,77,.55)}
+.btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;padding:1.2rem;background:rgba(5,10,25,.75);backdrop-filter:blur(6px)}
+.modal.show{display:flex}
+.letter{position:relative;max-width:560px;width:100%;max-height:88vh;overflow:auto;border-radius:20px;padding:2.4rem 1.8rem 2rem;
+  background:linear-gradient(160deg,#fffaf0,#f6e9c6);color:#2b2414;box-shadow:0 20px 80px rgba(0,0,0,.6);animation:pop .5s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes pop{from{opacity:0;transform:scale(.8) translateY(30px)}}
+.letter .to{font-family:'Great Vibes',cursive;font-size:2.4rem;color:#9a6b0b;line-height:1.2}
+.letter p{margin:.8rem 0;font-size:.97rem}
+.letter .sign{line-height:1.5;font-family:'Great Vibes',cursive;font-size:1.8rem;color:#9a6b0b;margin-top:1.2rem;text-align:right}
+.close{position:absolute;top:.6rem;right:.9rem;font-size:1.8rem;background:none;border:0;cursor:pointer;color:#6b4e0e}
+
+
+/* KELAS */
+.kelas{padding:2rem 1.2rem 3rem;max-width:860px;margin:0 auto;text-align:center}
+.kelas h2{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,5vw,2.5rem);color:var(--gold2);margin-bottom:.4rem}
+.kelas .lead{font-weight:300;margin-bottom:1.8rem;opacity:.85}
+.classphoto{border-radius:24px;padding:8px;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 10px 50px rgba(0,0,0,.35),0 0 40px rgba(230,185,77,.12)}
+.classphoto div{width:100%;aspect-ratio:16/10;border-radius:18px;background:var(--navy2) center/cover no-repeat;display:flex;align-items:center;justify-content:center;padding:1.5rem;color:var(--gold2);font-weight:300;font-size:.9rem}
+.kelas .caption{margin-top:1rem;font-family:'Great Vibes',cursive;font-size:1.7rem;color:var(--gold2)}
+.hero .from{display:inline-block;margin-top:.6rem;font-weight:300;font-size:.95rem;opacity:.9}
+.letter p{text-align:left}
+
+/* QUOTE */
+.quote{padding:3rem 1.5rem 4rem;text-align:center;max-width:720px;margin:0 auto}
+.quote blockquote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.2rem,3.6vw,1.7rem);line-height:1.6;margin-top:1rem}
+.quote cite{display:block;margin-top:1rem;font-size:.9rem;color:var(--gold);font-style:normal}
+
+/* FOOTER */
+footer{text-align:center;padding:3rem 1.5rem 5.5rem;border-top:1px solid var(--line);background:rgba(0,0,0,.2)}
+footer .script{font-family:'Great Vibes',cursive;font-size:2.4rem;color:var(--gold2)}
+footer p{font-weight:300;max-width:36rem;margin:.5rem auto}
+footer small{opacity:.6}
+
+/* MUSIC */
+#music{position:fixed;right:1rem;bottom:1rem;z-index:30;width:52px;height:52px;border-radius:50%;border:1px solid var(--line);cursor:pointer;
+  background:var(--glass);backdrop-filter:blur(10px);color:var(--gold2);font-size:1.3rem}
+#music.playing{animation:pulse 2s infinite}
+#music:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(230,185,77,.5)}50%{box-shadow:0 0 0 14px rgba(230,185,77,0)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<canvas id="confetti"></canvas>
+
+<section class="hero" id="home">
+  <div class="script">Selamat</div>
+  <h1>Hari Guru Nasional</h1>
+  <div class="date">25 NOVEMBER</div>
+  <p class="code">reksware_class.say("Terima kasih, Guruku");</p>
+  <p class="sub">Dedicated for <b>Pak Tommy &amp; Bu Fevi</b> - SMK Budi Mulia Karawang<br>
+  <span class="from">Dari kami, siswa-siswi 11 RPL, dengan seluruh rasa terima kasih.</span></p>
+  <a class="scroll" href="#kartu">Gulir, ada yang ingin kami sampaikan ↓</a>
+</section>
+
+<section class="cards" id="kartu">
+  <h2>Untuk Guru-Guru Kami</h2>
+  <p class="lead">Ketuk kartu untuk membukanya. Di baliknya ada kata-kata yang selama ini ingin kami ucapkan.</p>
+  <div class="grid">
+
+    <!-- KARTU PAK TOMMY -->
+    <button class="flip" type="button" aria-label="Kartu ucapan untuk Pak Tommy">
+      <div class="inner">
+        <div class="face front">
+          <div class="photo"><div id="foto-tommy">Letakkan foto Pak Tommy di sini</div></div>
+          <h3>Pak Tommy</h3>
+          <div class="role">Guru Produktif Coding<br>yang mengajari kami tidak menyerah</div>
+          <div class="hint">Ketuk untuk membuka ✦</div>
+        </div>
+        <div class="face back">
+          <h3>Untuk Pak Tommy</h3>
+          <p>Bapak mengajari kami menulis kode, tetapi yang paling kami bawa pulang adalah keyakinan bahwa kami bisa. Terima kasih sudah bertahan bersama kami, bahkan di saat kami sendiri hampir menyerah.</p>
+          <span class="btn" data-letter="tommy" role="button" tabindex="0">Buka Surat Ucapan</span>
+        </div>
+      </div>
+    </button>
+
+    <!-- KARTU BU FEVI -->
+    <button class="flip" type="button" aria-label="Kartu ucapan untuk Bu Fevi">
+      <div class="inner">
+        <div class="face front">
+          <div class="photo"><div id="foto-fevi">Letakkan foto Bu Fevi di sini</div></div>
+          <h3>Bu Fevi</h3>
+          <div class="role">Wali Kelas 11 RPL<br>orang tua kedua kami di sekolah</div>
+          <div class="hint">Ketuk untuk membuka ✦</div>
+        </div>
+        <div class="face back">
+          <h3>Untuk Bu Fevi</h3>
+          <p>Ibu bukan hanya wali kelas, Ibu adalah rumah kedua kami. Terima kasih sudah mendengarkan, menguatkan, dan percaya pada kami, bahkan saat kami belum percaya pada diri sendiri.</p>
+          <span class="btn" data-letter="fevi" role="button" tabindex="0">Buka Surat Ucapan</span>
+        </div>
+      </div>
+    </button>
+
+  </div>
+</section>
+
+<section class="kelas" id="kelas">
+  <h2>Kami, reksware_class</h2>
+  <p class="lead">Siswa-siswi 11 RPL. Kami belum sempurna, tapi kami tumbuh karena Bapak dan Ibu.</p>
+  <figure class="classphoto">
+    <div id="foto-kelas">Letakkan foto kelas 11 RPL (reksware_class) di sini</div>
+  </figure>
+  <p class="caption">11 RPL · reksware_class · SMK Budi Mulia Karawang</p>
+</section>
+
+<section class="quote">
+  <h2>Yang Tidak Bisa Dikompilasi</h2>
+  <blockquote>“Kode bisa kami salin, tetapi kesabaran dan ketulusan Bapak dan Ibu tidak ada di mesin pencari mana pun. Itu hanya bisa kami terima dari hati yang benar-benar peduli.”</blockquote>
+  <cite>Dari seluruh siswa-siswi 11 RPL</cite>
+</section>
+
+<footer>
+  <div class="script">Terima kasih, Guruku</div>
+  <p>Mungkin kami sering lupa berterima kasih, sering membuat Bapak dan Ibu lelah, dan sering membuat kesalahan. Tetapi di setiap langkah kami nanti, ada doa dan ajaran kalian yang menemani. Semoga Bapak dan Ibu selalu sehat, bahagia, dan dibalas dengan kebaikan yang berlipat.</p>
+  <p><b>Siswa-siswi 11 RPL · reksware_class</b></p>
+  <small>25 November · SMK Budi Mulia Karawang</small>
+</footer>
+
+<button id="music" type="button" aria-label="Putar musik latar" title="Putar / jeda musik">♪</button>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="letter-to">
+  <div class="letter">
+    <button class="close" id="close" aria-label="Tutup surat">×</button>
+    <div class="to" id="letter-to"></div>
+    <div id="letter-body"></div>
+    <div class="sign">Dengan sepenuh hati,<br>Siswa-siswi 11 RPL<br>reksware_class</div>
+  </div>
+</div>
+
+<audio id="bgm" loop><!-- Opsional: <source src="musik.mp3" type="audio/mpeg"> --></audio>
+
+<script>
+/* ===== ISI SURAT (edit teks di sini) ===== */
+const LETTERS = {
+  tommy:{to:'Untuk Bapak Tommy tercinta,',body:[
+    'Selamat Hari Guru Nasional, Pak. Hari ini kami ingin berhenti sejenak dari layar dan kode, lalu mengatakan sesuatu yang jarang sempat kami ucapkan: terima kasih.',
+    'Dulu, banyak dari kami datang ke kelas RPL tanpa tahu apa itu variabel, apalagi fungsi. Bapak mengajari kami dari nol, dengan sabar, berulang-ulang, tanpa membuat kami merasa bodoh. Saat kode kami penuh error dan kami hampir menyerah, Bapak berkata bahwa error adalah tanda kami sedang belajar. Kalimat itu masih kami ingat sampai sekarang.',
+    'Kami sadar, Bapak tidak hanya mengajari kami cara membuat program. Bapak mengajari kami cara berpikir, cara bertanggung jawab, dan cara bangkit setelah gagal. Kelak, saat kami berhasil membangun sesuatu, ingatlah bahwa di balik setiap baris kode itu ada ajaran Bapak.',
+    'Maaf untuk semua kali kami lalai, terlambat mengumpulkan tugas, dan membuat Bapak harus menjelaskan hal yang sama berkali-kali. Terima kasih tidak pernah lelah pada kami. Semoga Bapak selalu sehat, bahagia, dan dimudahkan segala urusannya.']},
+  fevi:{to:'Untuk Ibu Fevi tercinta,',body:[
+    'Selamat Hari Guru Nasional, Bu. Terima kasih sudah menjadi wali kelas yang menjaga kami seperti anak sendiri.',
+    'Ibu yang pertama menyadari saat kami murung, dan Ibu yang pertama menguatkan saat kami jatuh. Ibu mendengarkan cerita kami yang kadang sepele, menegur dengan lembut, dan selalu percaya bahwa kami bisa menjadi lebih baik. Di tengah tugas, ujian, dan proyek yang menumpuk, Ibu adalah tempat kami merasa aman.',
+    'Kami tahu kami belum selalu menjadi kelas yang mudah. Kami masih ribut, masih lupa, masih sering membuat Ibu geleng-geleng kepala. Tetapi Ibu tetap sabar menemani kami, satu per satu. Itu kebaikan yang akan kami ingat seumur hidup.',
+    'Terima kasih, Bu, sudah menjadikan 11 RPL bukan sekadar kelas, tetapi keluarga. Semoga Ibu selalu sehat, bahagia, dan dikelilingi orang-orang yang menyayangi Ibu sebagaimana kami menyayangi Ibu.']}
+};
+
+/* ===== FOTO: ganti URL/nama file lalu hapus komentar ===== */
+ setPhoto('foto-tommy','foto/tommy.jpg');
+ setPhoto('foto-fevi','foto/fevi.jpg');
+ setPhoto('foto-kelas','foto/kelas.jpg');
+function setPhoto(id,src){const e=document.getElementById(id);e.style.backgroundImage=`url("${src}")`;e.textContent='';}
+
+/* ===== PARTIKEL LATAR ===== */
+const bg=document.getElementById('bg'),bx=bg.getContext('2d');let W,H,dots=[];
+function size(){W=bg.width=innerWidth;H=bg.height=innerHeight;}
+size();addEventListener('resize',size);
+for(let i=0;i<60;i++)dots.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,r:Math.random()*2.4+.6,v:Math.random()*.4+.1,d:Math.random()*Math.PI*2,a:Math.random()*.6+.2});
+(function loop(){
+  bx.clearRect(0,0,W,H);
+  dots.forEach(p=>{
+    p.y-=p.v;p.d+=.01;p.x+=Math.sin(p.d)*.4;
+    if(p.y<-10){p.y=H+10;p.x=Math.random()*W;}
+    bx.beginPath();bx.arc(p.x,p.y,p.r,0,7);
+    bx.fillStyle=`rgba(247,221,148,${p.a})`;bx.shadowBlur=12;bx.shadowColor='#e6b94d';bx.fill();
+  });
+  requestAnimationFrame(loop);
+})();
+
+/* ===== CONFETTI ===== */
+const cv=document.getElementById('confetti'),cx=cv.getContext('2d');let bits=[],run=false;
+function fitC(){cv.width=innerWidth;cv.height=innerHeight;}fitC();addEventListener('resize',fitC);
+function confetti(){
+  const cols=['#e6b94d','#f7dd94','#ffffff','#5fb8ff','#ff8fa3','#7be0a8'];
+  for(let i=0;i<160;i++)bits.push({x:innerWidth/2,y:innerHeight*.55,vx:(Math.random()-.5)*16,vy:-Math.random()*16-4,
+    w:Math.random()*8+4,h:Math.random()*5+3,c:cols[i%cols.length],r:Math.random()*6,vr:(Math.random()-.5)*.4,life:0});
+  if(!run){run=true;tick();}
+}
+function tick(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  bits=bits.filter(b=>b.y<cv.height+20&&b.life<260);
+  bits.forEach(b=>{b.life++;b.vy+=.35;b.vx*=.99;b.x+=b.vx;b.y+=b.vy;b.r+=b.vr;
+    cx.save();cx.translate(b.x,b.y);cx.rotate(b.r);cx.fillStyle=b.c;cx.globalAlpha=Math.max(0,1-b.life/260);cx.fillRect(-b.w/2,-b.h/2,b.w,b.h);cx.restore();});
+  if(bits.length)requestAnimationFrame(tick);else{run=false;cx.clearRect(0,0,cv.width,cv.height);}
+}
+
+/* ===== FLIP CARD + SURAT ===== */
+const modal=document.getElementById('modal');
+function openLetter(k){
+  const L=LETTERS[k];
+  document.getElementById('letter-to').textContent=L.to;
+  document.getElementById('letter-body').innerHTML=L.body.map(t=>`<p>${t}</p>`).join('');
+  modal.classList.add('show');confetti();
+  document.getElementById('close').focus();
+}
+document.querySelectorAll('.flip').forEach(c=>c.addEventListener('click',e=>{
+  const b=e.target.closest('[data-letter]');
+  if(b){e.stopPropagation();openLetter(b.dataset.letter);return;}
+  c.classList.toggle('on');
+}));
+document.querySelectorAll('[data-letter]').forEach(b=>b.addEventListener('keydown',e=>{
+  if(e.key==='Enter'||e.key===' '){e.preventDefault();e.stopPropagation();openLetter(b.dataset.letter);}
+}));
+function closeL(){modal.classList.remove('show');}
+document.getElementById('close').onclick=closeL;
+modal.addEventListener('click',e=>{if(e.target===modal)closeL();});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeL();});
+
+/* ===== MUSIK ===== */
+/* Default: melodi lembut dibuat langsung dengan Web Audio (tanpa file).
+   Jika ingin musik sendiri: taruh musik.mp3 sefolder dengan file ini lalu
+   aktifkan <source> pada tag <audio id="bgm"> di atas. */
+const mbtn=document.getElementById('music'),bgm=document.getElementById('bgm');
+let ac,timer,playing=false;
+const CH=[[261.6,329.6,392],[220,261.6,329.6],[174.6,220,261.6],[196,246.9,293.7]]; // C Am F G
+function note(f,t,d){
+  const o=ac.createOscillator(),g=ac.createGain();
+  o.type='sine';o.frequency.value=f;
+  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.09,t+.08);g.gain.exponentialRampToValueAtTime(.0001,t+d);
+  o.connect(g).connect(ac.destination);o.start(t);o.stop(t+d);
+}
+function bar(i){
+  const c=CH[i%4],t=ac.currentTime+.05;
+  [0,1,2,1,2,1,2,0].forEach((n,k)=>note(c[n]*(k%7===0?.5:1),t+k*.5,1.6));
+}
+function synthStart(){
+  ac=ac||new (window.AudioContext||window.webkitAudioContext)();ac.resume();
+  let i=0;bar(i++);timer=setInterval(()=>bar(i++),4000);
+}
+mbtn.onclick=()=>{
+  const hasFile=bgm.querySelector('source');
+  if(!playing){hasFile?bgm.play():synthStart();playing=true;mbtn.classList.add('playing');mbtn.textContent='❚❚';mbtn.setAttribute('aria-label','Jeda musik latar');}
+  else{hasFile?bgm.pause():(clearInterval(timer),ac.suspend());playing=false;mbtn.classList.remove('playing');mbtn.textContent='♪';mbtn.setAttribute('aria-label','Putar musik latar');}
+};
+</script>
+</body>
+</html>
